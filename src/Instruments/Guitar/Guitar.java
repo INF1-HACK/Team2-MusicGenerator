@@ -1,5 +1,7 @@
-{	
-	public static void main(String[] args)		//In the final version there won't be a main function, as it will be just a class, not a program	
+public class Guitar
+{
+	//In the final version there won't be a main function, as it will be just a class, not a program	
+	public static void main(String[] args)		
 	{
 		Guitar_String[] strings = new Guitar_String[5];		//Each note has to have its own class, depending whether we will need to re-use the note, it might be beneficial to use a static class
 		int[] notes = new int[3];		//Simple array for the chord
@@ -44,8 +46,8 @@
 		}
 		
 	}
-
-	public static void playChord(int[] notes)			//Plays notes from the array, nearly simultaneously at 50 ms delay - to simulate the delay between plucking the strings
+//Plays notes from the array, nearly simultaneously at 50 ms delay - to simulate the delay between plucking the strings
+	public static void playChord(int[] notes)			
 	{
 		for(int i=0; i<notes.length;i++)
 		{
