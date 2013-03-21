@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -10,13 +9,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 //import javax.swing.JTextField;
-import javax.swing.JPopupMenu;
+
 
 public class Box2 {
 	
 	private static JButton playButton;
 	private static JButton loadButton;
-	
+	private static JButton pauseButton;
+
 	
   public static void main(String args[]) {
     JFrame horizontalFrame = new JFrame("Horizontal");
@@ -52,8 +52,20 @@ public class Box2 {
         }
     });
     
+    horizontalBox.add(Box.createVerticalStrut(30));
+    
+    pauseButton = new JButton("Pause");
+    horizontalBox.add(pauseButton);
+    
+    pauseButton.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e)
+        {
+            System.out.println("You clicked the pause button");
+        }
+    });
+    
     horizontalFrame.add(horizontalBox, BorderLayout.CENTER);
-    horizontalFrame.setSize(150, 150);
+    horizontalFrame.setSize(300, 150);
     horizontalFrame.setVisible(true);   
   }
   
