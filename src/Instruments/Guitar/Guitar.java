@@ -1,14 +1,16 @@
 public class Guitar
 {
-	//In the final version there won't be a main function, as it will be just a class, not a program	
-	public static void main(String[] args)		
-	{
-		Guitar_String[] strings = new Guitar_String[5];		//Each note has to have its own class, depending whether we will need to re-use the note, it might be beneficial to use a static class
-		int[] notes = new int[3];		//Simple array for the chord
+	private Note[] notes;
 
-		for(int i=0; i< strings.length; i++)		//Loops and plays 5 notes, starting with middle C
+	//In the final version there won't be a main function, as it will be just a class, not a program	
+	public void Play()		
+	{
+		Guitar_String[] strings = new Guitar_String[notes.length];		//Each note has to have its own class, depending whether we will need to re-use the note, it might be beneficial to use a  class
+			//Simple array for the chord
+
+		for(int i=0; i< notes.length; i++)		//Loops and plays 5 notes, starting with middle C
 		{
-			strings[i] = new Guitar_String(330+((0+i)*6));
+			strings[i] = new Guitar_String(notes[i].getFrequency());
 			try
 			{
 				strings[i].pluck();
@@ -17,37 +19,17 @@ public class Guitar
 			{
 				;
 			}			
-		}
-
-		try
-		{
-			Thread.sleep(1000);			//Waits for a second before playing chords
-		}
-		catch(Exception ex)
-		{
-			;
-		}
-
-		notes[0]=523;	//C
-		notes[1]=330;	//E
-		notes[2]=392;	//G
-
-
-		for(int i=0; i<3;i++)		//Plays the chords 3 times, with a second delay between them
-		{
-			try{
-				playChord(notes);
-				Thread.sleep(1000);
-			}
-			catch(Exception ex)
-			{
-				;
-			}
-		}
-		
+		}	
 	}
+
+	public Guitar(Note[] _notes)
+	{
+		notes = _notes;
+	}
+
+
 //Plays notes from the array, nearly simultaneously at 50 ms delay - to simulate the delay between plucking the strings
-	public static void playChord(int[] notes)			
+	public  void playChord(int[] notes)			
 	{
 		for(int i=0; i<notes.length;i++)
 		{
