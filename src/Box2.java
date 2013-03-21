@@ -1,16 +1,22 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 //import javax.swing.JTextField;
+import javax.swing.JPopupMenu;
 
 public class Box2 {
 	
 	private static JButton playButton;
 	private static JButton loadButton;
+	
 	
   public static void main(String args[]) {
     JFrame horizontalFrame = new JFrame("Horizontal");
@@ -38,6 +44,11 @@ public class Box2 {
     	public void actionPerformed(ActionEvent e)
         {
             System.out.println("You clicked the load button");
+            JFileChooser fc = new JFileChooser();
+            fc.showOpenDialog(null);
+            File file= fc.getSelectedFile();
+            System.out.println(file.toString());
+        
         }
     });
     
